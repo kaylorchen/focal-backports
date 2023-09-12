@@ -33,5 +33,5 @@ jobs:
     - name: upload artifact debian packages
       uses: actions/upload-artifact@v3
       with:
-        name: deb
+        name: deb_${{ matrix.architecture}}
         path: ./deb_packages
