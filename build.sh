@@ -20,8 +20,10 @@ do
     cd $directory_name
     DEB_BUILD_OPTIONS='--parallel' fakeroot debian/rules binary
     cd ..
+    ls
+    echo -e "\033[35m Installing $pkg_name \033[0m"
+    sudo apt install -y ./*.deb
     mv *deb deb_packages/
     sudo rm ${directory_name}* -rf
-    sudo apt install -y ./deb-packages/*.deb
   fi
 done
