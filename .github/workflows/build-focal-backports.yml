@@ -35,3 +35,41 @@ jobs:
       with:
         name: deb_${{ matrix.architecture}}
         path: ./deb_packages
+
+  Release:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        architecture: [arm64]
+    needs: Build
+    steps:
+    - name: download artifact
+      uses: actions/download-artifact@v3
+
+    - name: list file
+      run: |
+        ls -R
+        echo -e "\033[36m ********************* \033[0m"
+
+    - name: sync files
+      uses: burnett01/rsync-deployments@6.0.0
+      with:
+        switches: -avzr
+        path: deb_${{ matrix.architecture}}/
+        remote_path: ~/github/release
+        remote_host: ${{ secrets.HOST }}
+        remote_user: ${{ secrets.USERNAME }}
+        remote_key: ${{ secrets.SSH_KEY }}
+        remote_port: ${{ secrets.PORT }}
+
+    # - name: Aptly release
+    #   uses: appleboy/ssh-action@v1.0.0
+    #   with:
+    #     host: ${{ secrets.HOST }}
+    #     username: ${{ secrets.USERNAME }}
+    #     key: ${{ secrets.SSH_KEY }}
+    #     port: ${{ secrets.PORT }}
+    #     script: |
+    #       aptly repo add ros2_humble_focal github/release
+    #       aptly publish update  --force-overwrite  -batch -passphrase="${{ secrets.GPG_PASSPHRASE}}" focal ros2_humble_focal 
+

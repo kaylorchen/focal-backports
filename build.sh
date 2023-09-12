@@ -5,6 +5,7 @@ sudo apt update
 sudo apt install -y python3-apt
 mkdir -pv deb_packages
 python3 check_package.py
+cat update_packages.list
 cat update_packages.list | while read pkg_name
 do
   if [ -n "$pkg_name" ]; then
