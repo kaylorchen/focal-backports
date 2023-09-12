@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - ".github/workflows/.github/workflows/build-focal-backports.yml.yml"
+      - ".github/workflows/build-focal-backports.yml.yml"
       - "packages.list"
 jobs:
   Build:
@@ -29,7 +29,7 @@ jobs:
         fi
         docker run --rm -v ${PWD}:/root/ws ${DOCKER_PATH}:${{ matrix.architecture }}_compile_base1.1 sh -c "cd /root/ws && bash ./build.sh"
         tree deb_packages
-        
+
     - name: upload artifact debian packages
       uses: actions/upload-artifact@v3
       with:
