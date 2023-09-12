@@ -27,6 +27,6 @@ with open(argparse_repos(), 'r') as f:
 
 if len(update_packages_list) > 0:
     with open('update_packages.list', 'w') as f:
-        f.write('\n'.join(update_packages_list))
+        f.write('\n'.join(update_packages_list+['']))
 
 
