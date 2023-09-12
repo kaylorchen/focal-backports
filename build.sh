@@ -1,11 +1,12 @@
 #!/bin/bash
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys DE86F73ED9E67D5E  
-echo "deb [arch=amd64] http://debian.kaylordut.com:60001/focal-backports focal-backports main" | sudo tee /etc/apt/sources.list.d/debian-kaylordut.list > /dev/null
+echo "deb [arch=amd64] http://debian.kaylordut.com:50000/focal-backports focal-backports main" | sudo tee /etc/apt/sources.list.d/debian-kaylordut.list > /dev/null
 sudo apt update
 sudo apt install -y python3-apt
 mkdir -pv deb_packages
 python3 check_package.py
 cat update_packages.list
+echo "Starting................................................................"
 cat update_packages.list | while read pkg_name
 do
   if [ -n "$pkg_name" ]; then
