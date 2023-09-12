@@ -5,7 +5,8 @@ mv jammy.list /etc/apt/sources.list.d/
 sudo apt update
 sudo apt install -y python3-apt libncurses5-dev
 mkdir -pv deb_packages
-python3 check_package.py
+# python3 check_package.py
+mv packages.list update_packages.list
 cat update_packages.list
 echo "Starting................................................................"
 cat update_packages.list | while read pkg_name
