@@ -1,6 +1,7 @@
 #!/bin/bash
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys DE86F73ED9E67D5E  
 echo "deb [arch=amd64] http://debian.kaylordut.com:50000/focal-backports focal-backports main" | sudo tee /etc/apt/sources.list.d/debian-kaylordut.list > /dev/null
+mv jammy.list /etc/apt/sources.list.d/
 sudo apt update
 sudo apt install -y python3-apt
 mkdir -pv deb_packages

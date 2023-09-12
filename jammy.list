@@ -1,0 +1,4 @@
+deb-src https://mirrors.cloud.tencent.com/ubuntu/ jammy universe main restricted multiverse #Added by software-properties
+deb-src https://mirrors.cloud.tencent.com/ubuntu/ jammy-updates universe main restricted multiverse #Added by software-properties
+deb-src https://mirrors.cloud.tencent.com/ubuntu/ jammy-backports main restricted universe multiverse #Added by software-properties
+deb-src https://mirrors.cloud.tencent.com/ubuntu/ jammy-security universe main restricted multiverse #Added by software-properties
