@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - ".github/workflows/build-focal-backports.yml.yml"
+      - ".github/workflows/build-focal-backports.yml"
       - "packages.list"
 jobs:
   Build:
