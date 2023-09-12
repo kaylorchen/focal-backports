@@ -1,0 +1,27 @@
+name: build focal backports packages
+
+env:
+    DOCKER_PATH: kaylor/focal_humble_env
+
+on: 
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/.github/workflows/build-focal-backports.yml.yml"
+      - "packages.list"
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        architecture: [arm64]
+    
+    steps:
+    - name: Checkout source repository
+      uses: actions/checkout@v3
+    
+    - name: Build
+      run: |
+        if [ ${{ matrix.architecture}} == arm64 ]; then
+          echo Architecture is ${{ matrix.architecture}}
+        fi
